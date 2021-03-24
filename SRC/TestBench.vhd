@@ -132,7 +132,7 @@ begin
             end loop;
 
 		    report "*** The number of MISMATCH are: " & integer'image(MISMATCH);
-        for i in 0 to 5 loop
+        for i in 0 to 10 loop
             wait until falling_edge(clk);
         end loop;		
 		file_close(ground_file);
