@@ -93,11 +93,10 @@ begin
             wait until falling_edge(clk);
             end loop;
 
-		
+		file_close(result_file);
         for i in 0 to 5 loop
             wait until falling_edge(clk);
-        end loop;		
-		file_close(result_file);  
+        end loop;				  
 	end process;
 --------------------------------------------------------------------------------------------
 -- Third process to comare expected data with output
@@ -132,11 +131,12 @@ begin
             end loop;
 
 		    report "*** The number of MISMATCH are: " & integer'image(MISMATCH);
-        for i in 0 to 10 loop
+        file_close(ground_file);
+        for i in 0 to 100 loop
             wait until falling_edge(clk);
         end loop;		
-		file_close(ground_file);
+		
         std.env.finish; 
 	end process;
-
+	
 end Behavioral;
